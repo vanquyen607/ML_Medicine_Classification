@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân loại tác dụng phụ của thuốc</title>
+    <style> 
+        .form_phanloai {
+            display: grid;
+            justify-content: space-around;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        h3 {
+            text-align: center;
+            margin: 65px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Phân loại bằng mô hình Machine Learning</h2>
+    <form action="/classify" method="post" class="form_phanloai" >
+        
+        <label for="composition">Thành phần:</label>
+        <input type="text" id="composition" name="composition" required><br><br>
+        
+        <label for="uses">Công dụng:</label>
+        <input type="text" id="uses" name="uses" required><br><br>
+        
+        <input type="submit" value="Phân loại">
+    </form>
+    <div>
+       <p> *Note: sử dụng thuộc tính 'công dụng ' và 'thành phần' để phân loại nhãn 'tác dụng phụ' của thuốc </p> 
+    </div>
+    
+
+    <!-- Hiển thị kết quả dự đoán -->
+    {% if classification_text %}
+    <h3>{{ classification_text }}</h3>
+    {% endif %}
+</body>
+</html>
